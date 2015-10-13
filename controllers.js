@@ -8,7 +8,7 @@ app.controller('TwitterController', function($scope,$q, twitterService) {
     //using the OAuth authorization result get the latest 20 tweets from twitter for the user
     $scope.refreshTimeline = function(maxId) {
         twitterService.getLatestTweets(maxId).then(function(data) {
-            $scope.tweets = $scope.tweets.concat(data);
+            $scope.tweets = $scope.tweets.concat(data.statuses);
         },function(){
             $scope.rateLimitError = true;
         });

@@ -32,9 +32,10 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
         getLatestTweets: function (maxId) {
             //create a deferred object using Angular's $q service
             var deferred = $q.defer();
-      			var url='/1.1/statuses/home_timeline.json';
+      			//var url='/1.1/statuses/home_timeline.json';
+                var url='/1.1/search/tweets.json?q=metro+caracas+retraso&geocode=10.49605,-66.898277,1000km';
       			if(maxId){
-      				url+='?max_id='+maxId;
+      				url+='&max_id='+maxId;
       			}
             var promise = authorizationResult.get(url).done(function(data) { //https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline
                 //when the data is retrieved resolve the deferred object
